@@ -1,4 +1,5 @@
 var slonComponents = angular.module('slon.components', []);
+slonComponents.run(function($rootScope){});
 
 slon = (function() {
     var scope = {};

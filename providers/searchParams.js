@@ -27,8 +27,7 @@ slonComponents.provider('searchParams', function () {
             }
         }
 
-        function GroupOfParams() {
-        }
+        function GroupOfParams() {}
 
         GroupOfParams.prototype = {
             getDataForRequest: getAllDataForRequest,
