@@ -1,0 +1,20 @@
+<div class="slon-buttons {{(cssClass ? cssClass : '') + ' ' + currentOption.cssClass}}">
+    <div class="slon-buttons__button"
+         ng-repeat="(key, button) in object.options track by button.priority">
+        <input ng-if="checkbox"
+               id="{{'buttons_' + name + $index}}" type="checkbox"
+               ng-model="object.value[key]"
+               ng-true-value="{{key}}"
+               ng-change="changeCallback(param)">
+        <input ng-if="!checkbox"
+               name="{{type}}"
+               id="{{'buttons_' + name + $index}}" type="radio"
+               ng-model="object.value"
+               ng-value="key"
+               ng-change="changeCallback(param)">
+        <label for="{{'buttons_' + name + $index}}"
+               class="slon-buttons__label">
+            <span>{{button.title}}</span>
+        </label>
+    </div>
+</div>

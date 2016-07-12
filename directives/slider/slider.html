@@ -1,0 +1,92 @@
+<div class="tru-slider"
+     hm-dragstart="dragStart($event)"
+     hm-dragleft="dragLeft($event);"
+     hm-dragright="dragRight($event);"
+     hm-dragend="dragEnd($event)"
+     ng-if="slides.length">
+    <div class="tru-slider__button tru-slider__button--prev"
+         ng-class="{'tru-slider__button--hide' : animation !== 'fade' && (moveIsStart || isTouchDevice())}"
+         ng-click="prevSlide($event)"
+         ng-if="slides.length > 1" ng-style="{'left' : arrowsIndent + 'px'}">
+        <div class="tru-slider__handler tru-slider__handler--prev fa fa-angle-left" ng-style="{'font-size':+ arrowsSize + 'px', 'margin-top':-arrowsSize/2 + 'px'}"></div>
+    </div>
+    <div class="tru-slider__thumbs"
+         ng-if="thumbsOn && !loadingFirstImage"
+         hm-dragend="thumbsMoveEnd($event)"
+         hm-dragstart="thumbsMoveStart($event)"
+         hm-dragleft="thumbsMove($event)"
+         hm-dragright="thumbsMove($event)"
+         hm-manager-options='{"enabled":true,"preventGhosts":true}'
+         ng-style="thumbsStyles">
+        <div class="tru-slider__thumb"
+             ng-class="{'tru-slider__thumb--show' : isTouchDevice()}"
+             ng-repeat="thumb in thumbs track by $index">
+            <img class="tru-slider__thumb-image" ng-class="$index == slideIndex ? 'active':''"
+                 ng-src="{{thumb.small}}" ng-click="goToSlide($event, $index)" />
+        </div>
+    </div>
+
+    <div class="tru-slider__viewport tru-slider__viewport--carousel"
+         ng-if="animation == 'carousel' && !onlyContentMode"
+        ng-style="animationsStyles.carousel">
+        <div class="tru-slider__list-item-animate-carousel"
+             ng-class="scope.shadowObject"
+             ng-repeat="slide in slidesArray track by $index">
+            <div class="slon-spinner-slider" ng-show="slide.loadingImage"></div>
+            <div class="tru-slider__slide-carousel"
+                 ng-hide="slide.loadingImage"
+                 ng-if="!($index === 1 && model3D && model3D.isActive) && !forRobot"
+                 style="background-image: url({{slide.src}})">
+            </div>
+            <div class="tru-slider__template"
+                 ng-if="slide.template"
+                 ng-bind-html="slide.template | to_trusted">
+            </div>
+            <div class="tru-slider__template tru-slider__iframe" ng-if="$index === 1 && model3D" ng-show="model3D.isActive">
+                <iframe width="100%" height="100%" ng-src="{{::model3D.url}}" frameborder="0" id="sliderIframe" allow-fullscreen></iframe>
+            </div>
+            <img class="tru-slider__slide-carousel" ng-if="forRobot" ng-src="{{slide.src}}" title="{{seoTitle + ' '+trg.photo+' ' + ($index + 1)}}"
+                 alt="{{seoTitle + ' '+trg.photo+' ' + ($index + 1)}}"/>
+        </div>
+    </div>
+
+    <div class="tru-slider__viewport tru-slider__viewport--content-carousel"  ng-if="animation == 'carousel' && onlyContentMode"
+         style="background-image: url({{baseImg}})">
+        <div class="tru-slider__content-slider"
+             ng-style="{'width' : 100 * slidesArray.length + '%',
+             'transform': 'translate3d(' + (-100 / slidesArray.length * curPhoto) + '%, 0px, 0px)',
+        '-webkit-transform': 'translate3d('+ (-100 / slidesArray.length * curPhoto) + '%, 0px, 0px)',
+        '-moz-transform': 'translate3d('+ (-100 / slidesArray.length * curPhoto) + '%, 0px, 0px)',
+        '-ms-transform': 'translate3d('+ (-100 / slidesArray.length * curPhoto) + '%, 0px, 0px)',
+        'transition-duration': (activeTransition ? durationInSec : nullTransition) + 's',
+        'transition-timing-function': timingFunction}">
+            <div class="tru-slider__list-item-animate-carousel"
+                 ng-class="scope.shadowObject"
+                 ng-repeat="slide in slidesArray track by $index">
+                <div class="tru-slider__template" ng-if="slide.template" ng-bind-html="slide.template | to_trusted">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tru-slider__viewport"  ng-if="animation == 'fade'"
+         ng-style="{'transition-duration': (activeTransition ? durationInSec : 0) + 's',
+            'transition-timing-function': timingFunction}">
+
+        <div class="tru-slider__list-item-animate-fade"
+             ng-class="{'tru-slider__list-item-animate-fade--show' : curPhoto === $index}"
+             ng-style="animationsStyles.fade"
+             ng-repeat="slide in slidesArray track by $index">
+            <div class="slon-spinner-slider slon-spinner-slider--no-bg" ng-show="slide.loadingImage"></div>
+            <img class="tru-slider__slide-fade"
+                 ng-click="putOnAll($event)"
+                 ng-class="{'tru-slider__slide-fade--stretch-by-width' : stretchByWidth}" ng-src="{{slide.src}}"/>
+        </div>
+
+    </div>
+    <div class="tru-slider__button tru-slider__button--next"
+         ng-class="{'tru-slider__button--hide' : animation !== 'fade' && (moveIsStart || isTouchDevice())}"
+         ng-click="nextSlide($event)" ng-if="slides.length > 1" ng-style="{'right' : arrowsIndent + 'px'}">
+        <div class="tru-slider__handler tru-slider__handler--next fa fa-angle-right" ng-style="{'font-size':+ arrowsSize + 'px', 'margin-top':-arrowsSize/2 + 'px'}"></div>
+    </div>
+</div>

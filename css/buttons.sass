@@ -1,0 +1,834 @@
+html body save-and-exit .actions
+  padding: 20px 0 !important
+
+.back-button, .save-and-exit, .back-to-list
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  border: none
+  outline: none
+  background: none
+  display: inline-block
+  color: $muted
+  font-family: $serif
+  font-size: 20px
+  line-height: 32px
+  letter-spacing: normal
+  padding: 0
+  text-transform: uppercase
+  text-decoration: none
+  cursor: pointer
+
+  &:hover
+    color: $muted
+    text-decoration: none
+
+.back-button
+  font-size: 20px
+  line-height: 20px
+  text-transform: none
+  border-bottom: 1px solid #999999
+  color: #999999
+  position: relative
+  margin-top: 12px
+  margin-right: 0
+
+  &:before
+    content: '<'
+    display: inline-block
+    position: absolute
+    left: -15px
+
+.button-wrap
+  padding: 0 45px
+  text-align: center
+  height: 78px
+
+.button
+  border: none
+  padding: 0 2px 6px
+  border-radius: 100% 100% 0 0
+  display: inline-block
+  text-decoration: none
+  background-color: $dark-purple
+  position: relative
+  -webkit-transition: all .3s ease
+  -moz-transition: all .3s ease
+  -ms-transition: all .3s ease
+  -o-transition: all .3s ease
+  transition: all .3s ease
+  outline: none
+
+  &:hover, &:active
+    margin-top: 3px
+    text-decoration: none
+    padding-bottom: 3px
+
+    &:before, &:after
+      height: 4px
+
+  &:before, &:after
+    box-sizing: content-box
+    -moz-box-sizing: content-box
+    position: absolute
+    top: 2px
+    content: ''
+    width: 0
+    height: 8px
+    border-style: solid
+    -webkit-transition: all .3s ease
+    -moz-transition: all .3s ease
+    -ms-transition: all .3s ease
+    -o-transition: all .3s ease
+    transition: all .3s ease
+
+  &:before
+    left: -34px
+    border-width: 34px 34px 34px 0
+    border-color: transparent $dark-purple transparent transparent
+
+  &:after
+    right: -34px
+    border-width: 34px 0 34px 34px
+    border-color: transparent transparent transparent $dark-purple
+
+  > span
+    display: block
+    background-color: $purple
+    padding: 5px 2px
+    position: relative
+    z-index: 1
+
+    &:before, &:after
+      position: absolute
+      top: 0
+      content: ''
+      width: 0
+      height: 0
+      border-style: solid
+
+    &:before
+      left: -36px
+      border-width: 36px 36px 36px 0
+      border-color: transparent $purple transparent transparent
+
+    &:after
+      right: -36px
+      border-width: 36px 0 36px 36px
+      border-color: transparent transparent transparent $purple
+
+    > span
+      color: $purple
+      font-family: 'Roboto Slab', serif
+      font-size: 24px
+      text-transform: uppercase
+      font-weight: bold
+      display: block
+      padding: 15px 55px
+      background-color: $white
+      position: relative
+      z-index: 1
+
+      &:before, &:after
+        position: absolute
+        top: 0
+        content: ''
+        width: 0
+        height: 0
+        border-style: solid
+
+      &:before
+        left: -31px
+        border-width: 31px 31px 31px 0
+        border-color: transparent $white transparent transparent
+
+      &:after
+        right: -31px
+        border-width: 31px 0 31px 31px
+        border-color: transparent transparent transparent $white
+
+  &.muted, &[disabled]
+    background-color: #a6a6a6
+
+    &:before
+      border-color: transparent #a6a6a6 transparent transparent
+
+    &:after
+      border-color: transparent transparent transparent #a6a6a6
+
+    > span
+      background-color: #bdbdbd
+
+      &:before
+        border-color: transparent #bdbdbd transparent transparent
+
+      &:after
+        border-color: transparent transparent transparent #bdbdbd
+
+      > span
+        color: #a6a6a6
+  &.dark-blue
+    background-color: #383b86
+
+    &:before
+      border-color: transparent #383b86 transparent transparent
+
+    &:after
+      border-color: transparent transparent transparent #383b86
+
+    > span
+      background-color: #4c4fb4
+
+      &:before
+        border-color: transparent #4c4fb4 transparent transparent
+
+      &:after
+        border-color: transparent transparent transparent #4c4fb4
+
+      > span
+        color: #4c4fb4
+
+.dashed
+  font-family: $sans-serif
+  color: $black
+  font-size: 18px
+  text-decoration: none
+  display: inline-block
+  position: relative
+  overflow: hidden
+  padding-bottom: 1px
+
+  &:after
+    position: absolute
+    left: -10px
+    color: $white
+    background-color: $black
+    height: 1px
+    line-height: 1px
+    overflow: hidden
+    content: '-------------------------------------------------------------------'
+    letter-spacing: 7px
+    display: block
+
+$linkColor: #3758a6
+
+.link
+  color: $linkColor
+  text-decoration: underline
+  cursor: pointer
+  font-family: $sans-serif
+  &--no-decor
+    text-decoration: none
+
+.dotted
+  color: $linkColor
+  border-bottom: 1px dotted $linkColor
+  text-decoration: none
+  cursor: pointer
+
+.solid
+  color: $linkColor
+  border-bottom: 1px solid $linkColor
+  text-decoration: none
+  cursor: pointer
+
+.dashed-link
+  @extend .dotted
+  border-bottom: 1px dashed #3758a6
+  font-size: 16px
+
+.simple-button
+  +box-sizing()
+  +appearance(none)
+  border: 3px solid #c0c0c0
+  font-family: $serif
+  font-size: 16px
+  color: #c0c0c0
+  text-transform: uppercase
+  text-align: center
+  padding: 15px 30px
+  text-decoration: none
+  background-color: transparent
+  position: relative
+  display: inline-block
+  min-width: 160px
+  cursor: pointer
+  margin-right: 10px
+  &:hover
+    text-decoration: none
+  &.with-bottom-arrow
+    background-color: #fff
+
+    &:before, &:after
+      content: ''
+      width: 0
+      height: 0
+      border-style: solid
+      position: absolute
+      left: 50%
+
+    &:after
+      border-width: 7px 7px 0 7px
+      border-color: #fff transparent transparent transparent
+      margin-left: -7px
+      bottom: -7px
+
+    &:before
+      border-width: 11px 11px 0 11px
+      border-color: #c0c0c0 transparent transparent transparent
+      margin-left: -11px
+      bottom: -11px
+
+  &.purple
+    border-color: $purple
+    color: $purple
+
+    &:before
+      border-color: $purple transparent transparent transparent
+
+  &.blue
+    border-color: #5cb2e8
+    color: #5cb2e8
+
+    &:before
+      border-color: #5cb2e8 transparent transparent transparent
+
+  &.white
+    border-color: #fff
+    color: #fff
+
+  &.transparent
+    border-color: transparent
+
+  &.rotate
+    padding: 10px 15px 9px
+    min-width: 100px
+    float: left
+
+.next-button
+  +box-sizing(border-box)
+  +appearance(none)
+  -webkit-font-smoothing: subpixel-antialiased
+  display: inline-block
+  background: #f5ab1b
+  color: #fff
+  font-size: 20px
+  line-height: 24px
+  padding: 0 30px 0 40px
+  border: none
+  text-decoration: none
+  text-align: center
+  position: relative
+  font-family: $serif
+  border-right: 1px solid #f5ab1b
+  border-bottom: 2px solid #c57e02
+  cursor: pointer
+  height: 48px
+  letter-spacing: normal
+
+  &[disabled]
+    opacity: .3
+
+  &:focus
+    outline: none
+
+  &:before, &:after
+    content: ''
+    width: 0
+    height: 0
+    border-style: solid
+    position: absolute
+    top: 0
+    right: -24px
+    border-width: 24px 0 23px 24px
+
+  &:before
+    border-color: transparent transparent transparent #c57e02
+    top: 2px
+
+  &:after
+    border-color: transparent transparent transparent #f5ab1b
+
+  &:hover
+    background: #fec149
+    background: -moz-linear-gradient(-45deg, #fec149 0%, #f5ac1c 100%)
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#fec149), color-stop(100%,#f5ac1c))
+    background: -webkit-linear-gradient(-45deg, #fec149 0%,#f5ac1c 100%)
+    background: -o-linear-gradient(-45deg, #fec149 0%,#f5ac1c 100%)
+    background: -ms-linear-gradient(-45deg, #fec149 0%,#f5ac1c 100%)
+    background: linear-gradient(135deg, #fec149 0%,#f5ac1c 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec149', endColorstr='#f5ac1c',GradientType=1 )
+
+    &:after
+      border-color: transparent transparent transparent #f5ac1c
+
+  &:active
+    border-bottom: 0
+    margin-top: 2px
+    background: #f5ab1b
+
+    &:before
+      border-color: transparent transparent transparent transparent
+
+.next-button-simple
+  +reset-button
+  +box-sizing(border-box)
+  display: inline-block
+  padding: 0 28px 0 36px
+  background-color: transparent
+  color: #ed9a0a
+  font-family: $serif
+  font-size: 20px
+  border: 2px solid #ed9a0a
+  border-right: none
+  position: relative
+  height: 48px
+
+  &:before
+    content: ''
+    position: absolute
+    right: -25px
+    top: -2px
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: 24px 0 24px 25px
+    border-color: transparent transparent transparent #ed9a0a
+
+  &:after
+    content: ''
+    position: absolute
+    right: -23px
+    top: 0
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: 22px 0 22px 23px
+    border-color: transparent transparent transparent #f5f8fe
+
+  &.without-arrow
+    border: 2px solid #ed9a0a
+
+    &:before, &:after
+      display: none
+
+.next-button, .next-button-simple
+  &.full
+    width: 100%
+    padding: 0 10px
+
+.next-button-description
+  font-family: $sans-serif
+  color: #ed9a0a
+  display: block
+  text-align: center
+  font-size: 16px
+  padding: 10px
+  line-height: 20px
+  &:first-letter
+    text-transform: uppercase
+  &.info
+    padding: 20px 60px
+    background-image: url('/static/images/common/media/icon_i.png')
+    background-position: 20px 15px
+    background-repeat: no-repeat
+    text-align: left
+    font-weight: 700
+
+.common-button
+  +box-sizing(border-box)
+  +appearance(none)
+  -webkit-font-smoothing: subpixel-antialiased
+  display: inline-block
+  background: hsl(39, 91%, 53%)
+  color: hsl(0, 0%, 100%)
+  font-size: 20px
+  line-height: 45px
+  border: none
+  text-decoration: none
+  text-align: center
+  position: relative
+  font-family: $serif
+  border-bottom: 2px solid hsl(38, 97%, 39%)
+  cursor: pointer
+  height: 48px
+  letter-spacing: normal
+  padding: 0 20px 0 20px
+  &-simple
+    @extend .common-button
+    line-height: 24px
+    padding: 0 30px 0 30px
+    background-color: transparent
+    color: hsl(38, 91%, 48%)
+    border: 2px solid hsl(38, 91%, 48%)
+    &:hover
+      background-color: hsla(220, 70%, 99%, 0.99)
+      color: hsl(38, 97%, 43%)
+  &-xs
+    font-size: 15px
+    padding: 0 20px 0
+
+  &[disabled],
+  &[disabled]:hover
+    background: hsl(0, 0%, 81%)
+    border-bottom: 2px solid hsl(0, 0%, 81%)
+    cursor: default
+    opacity: 1
+
+  &:focus
+    outline: none
+
+  &:before
+    border-color: transparent transparent transparent hsl(38, 97%, 39%)
+    top: 2px
+
+  &:after
+    border-color: transparent transparent transparent hsl(39, 91%, 53%)
+
+  &:hover
+    background: #fec149
+    background: -moz-linear-gradient(-45deg, #fec149 0%, #f5ac1c 100%)
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#fec149), color-stop(100%,#f5ac1c))
+    background: -webkit-linear-gradient(-45deg, #fec149 0%,#f5ac1c 100%)
+    background: -o-linear-gradient(-45deg, #fec149 0%,#f5ac1c 100%)
+    background: -ms-linear-gradient(-45deg, #fec149 0%,#f5ac1c 100%)
+    background: linear-gradient(135deg, #fec149 0%,#f5ac1c 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec149', endColorstr='#f5ac1c',GradientType=1 )
+
+    &:after
+      border-color: transparent transparent transparent #f5ac1c
+
+  &:active
+    border-bottom: 0
+    background: #f5ab1b
+
+    &:before
+      border-color: transparent transparent transparent transparent
+
+.prev-button
+  +box-sizing(border-box)
+  +appearance(none)
+  -webkit-font-smoothing: subpixel-antialiased
+  display: inline-block
+  background: #f5ab1b
+  color: #fff
+  font-size: 20px
+  line-height: 24px
+  padding: 0 30px 0 40px
+  border: none
+  text-decoration: none
+  text-align: center
+  position: relative
+  font-family: $serif
+  border-right: 1px solid #f5ab1b
+  border-bottom: 2px solid #c57e02
+  cursor: pointer
+  height: 48px
+  letter-spacing: normal
+
+  &[disabled]
+    opacity: .3
+
+  &:focus
+    outline: none
+
+  &:before, &:after
+    content: ''
+    width: 0
+    height: 0
+    border-style: solid
+    position: absolute
+    top: 0
+    left: -24px
+    border-width: 24px 24px 23px 0
+
+  &:before
+    border-color: transparent #c57e02 transparent transparent
+    top: 2px
+
+  &:after
+    border-color: transparent #f5ab1b transparent transparent
+
+  &:hover
+    background: #fec149
+    background: -moz-linear-gradient(45deg, #fec149 0%, #f5ac1c 100%)
+    background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#fec149), color-stop(100%,#f5ac1c))
+    background: -webkit-linear-gradient(45deg, #fec149 0%,#f5ac1c 100%)
+    background: -o-linear-gradient(45deg, #fec149 0%,#f5ac1c 100%)
+    background: -ms-linear-gradient(45deg, #fec149 0%,#f5ac1c 100%)
+    background: linear-gradient(45deg, #fec149 0%,#f5ac1c 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec149', endColorstr='#f5ac1c',GradientType=1 )
+
+    &:after
+      border-color: transparent hsl(39, 92%, 66%) transparent transparent
+
+  &:active
+    border-bottom: 0
+    margin-top: 2px
+    background: #f5ab1b
+
+    &:before
+      border-color: transparent transparent transparent transparent
+
+.skeleton-button
+  color: #fff
+  padding: 10px 40px
+  cursor: pointer
+  text-align: center
+  display: inline-block
+  text-decoration: none
+  border: 0
+  position: relative
+  &:disabled
+    opacity: 0.3
+  &.small
+    padding: 10px 30px
+
+.skeleton-button-pt-sans
+  font-size: 15px
+  font-weight: bold
+  font-family: "PT Sans", sans-serif
+
+.skeleton-button-sf
+  font-size: 14px
+  font-family: 'UFont',sans-serif
+  font-weight: 700
+
+.a-button
+  @extend .skeleton-button
+  @extend .skeleton-button-pt-sans
+  background: hsl(39, 92%, 53%)
+  &:hover
+    background: hsl(39, 92%, 73%)
+
+.orange-button
+  @extend .skeleton-button
+  @extend .skeleton-button-sf
+  background: #f5ab1b
+  &:hover
+    background: #df981b
+
+.blue-button
+  @extend .skeleton-button
+  @extend .skeleton-button-sf
+  background: #4e96cc
+  &:hover
+    background: #477aa9
+
+.b-button
+  @extend .skeleton-button
+  @extend .skeleton-button-pt-sans
+  background: hsl(221, 59%, 79%)
+  &:hover
+    background: hsl(221, 59%, 85%)
+
+.c-button
+  @extend .skeleton-button
+  @extend .skeleton-button-pt-sans
+  background: hsl(15, 100%, 50%)
+  &:hover
+    color: #ffdfde
+    background: hsl(15, 100%, 70%)
+
+.d-button
+  @extend .skeleton-button
+  @extend .skeleton-button-pt-sans
+  background: transparent
+  border: 1px solid hsla(39, 92%, 53%, 100%)
+  color: hsla(39, 92%, 53%, 100%)
+  &:hover
+    border: 1px solid hsla(39, 92%, 73%, 100%)
+    color: hsla(39, 92%, 73%, 100%)
+
+.green-button
+  @extend .skeleton-button
+  @extend .skeleton-button-pt-sans
+  background: hsl(151, 65%, 48%)
+  &:hover
+    background: hsl(151, 65%, 68%)
+
+.cyan-button
+  @extend .skeleton-button
+  @extend .skeleton-button-pt-sans
+  background: hsl(221, 59%, 79%)
+  &:hover
+    background: hsl(221, 59%, 85%)
+
+.circle-times-button
+  background: hsl(300, 2%, 50%)
+  width: 23px
+  height: 23px
+  border-radius: 100%
+  text-align: center
+  transition: all 0.1s linear
+  font-family: Arial,sans-serif
+  color: #fff
+  font-size: 27px
+  line-height: 24px
+  cursor: pointer
+  &:hover
+    background: hsl(300, 2%, 70%)
+
+.close-button
+  font-size: 30px
+  color: #fff
+  font-family: Times New Roman, serif
+  cursor: pointer
+  transition: all 0.2s linear
+  &:hover
+    color: #ED1B35
+
+.slon-buttons
+  border: 1px solid
+  border-color: #cccccc
+  display: -webkit-flex
+  display: flex
+  background-color: #fff
+  height: 40px
+  transition: all linear 0.2s
+  &--transparent
+    background-color: transparent
+  &__button
+    transition: all linear 0.2s
+    -webkit-flex: 1 1 auto
+    flex: 1 1 auto
+    border-right: 1px solid
+    border-color: inherit
+    display: -webkit-flex
+    display: flex
+    &:last-child
+      border-right: none
+  input
+    display: none
+    &:checked + label
+      background-color: #cbdcff
+      -webkit-box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.3)
+      -moz-box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.3)
+      box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.3)
+      span
+        color: #123584
+        font-weight: bold
+  &__label
+    transition: all linear 0.2s
+    text-align: center
+    vertical-align: middle
+    position: relative
+    cursor: pointer
+    color: #333
+    margin-bottom: 0
+    display: -webkit-flex
+    display: flex
+    -webkit-flex: 1 1 auto
+    flex: 1 1 auto
+    width: 100%
+    &:hover
+      background: #F4F9FF
+    span
+      line-height: 40px
+      font-family: "PT Sans", sans-serif
+      font-size: 16px
+      font-weight: normal
+      margin: auto
+      border: 0 !important
+      padding: 0 13px
+  &--adding-apartment
+    span
+      font-size: 18px
+    label
+      &:hover
+        background-color: rgba(255, 227, 174, 0.35)
+    input
+      &:checked + label
+        background-color: #ffe2ab
+        &:hover
+          background-color: #ffe2ab
+        span
+          color: #724800
+
+.slon-checkbox
+  span
+    font-family: "PT Sans", sans-serif
+    font-size: 16px
+    position: relative
+    bottom: 2px
+    left: 6px
+  &__label
+    //flex: 0 0 auto
+    background: #fff
+    display: inline-block !important
+    border: 1px solid #cccccc
+    height: 32px
+    width: 32px
+    display: inline-block
+    +user-select(none)
+    &:hover
+      background: #FCFDFF
+      i
+        color: #FCFDFF
+    i
+      color: #fff
+      font-size: 23px
+      width: 100%
+      line-height: 29px
+      text-align: center
+      cursor: pointer
+  input
+    display: none
+    &:checked + label
+      i
+        color: #5783d2
+
+.slon-btn-group
+  display: -webkit-flex
+  display: flex
+  &--search
+    padding-left: 8px
+  &__btn
+    width: 40px
+    height: 40px
+    background: #fff
+    border: 1px solid #cccccc
+    border-radius: 0
+    padding: 9px 0
+    color: #7f7f7f
+    transition: all 0.15s ease-out
+    cursor: pointer
+    text-align: center
+    i
+      font-size: 22px
+    &.active
+      background: #cbdcff
+      color: #4d618d
+      -webkit-box-shadow: inset 0px 3px 5px 0px rgba(0,65,185,0.15)
+      -moz-box-shadow: inset 0px 3px 5px 0px rgba(0,65,185,0.15)
+      box-shadow: inset 0px 3px 5px 0px rgba(0,65,185,0.15)
+
+.slon-tag
+  padding-left: 7px
+  color: #fff
+  overflow: hidden
+  position: relative
+  display: -webkit-flex
+  display: flex
+  -webkit-flex: 0 0 auto
+  flex: 0 0 auto
+  cursor: pointer
+  line-height: 24px
+  font-size: 14px
+  .remove-button
+    color: #fff
+    font: normal normal normal 14px/1 FontAwesome
+    font-size: 19px
+    text-rendering: auto
+    -webkit-font-smoothing: antialiased
+    padding: 0 5px
+    cursor: pointer
+    display: inline
+    margin: auto
+    &:after
+      content: "\f00d"
+    &:hover
+      text-decoration: none
+
+
+

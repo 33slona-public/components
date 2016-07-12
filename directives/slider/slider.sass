@@ -1,0 +1,218 @@
+$verticalPadding: 96px
+$horizontalPadding: 55px
+$closeButtonWidth: 22px
+$closeButtonHeight: 23px
+
+.tru-slider
+  cursor: pointer
+  box-shadow: none
+  margin: 0
+  padding: 0
+  position: relative
+  zoom: 1
+  border: 0
+  height: 100%
+  overflow: hidden
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  &:hover
+    .tru-slider__button
+      opacity: 1
+    .tru-slider__thumb
+      opacity: 1
+  &__iframe
+    z-index: 10000
+  &__template
+    display: -webkit-flex
+    display: flex
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+  &__content-slider
+    width: 100%
+    height: 100%
+
+.tru-slider__viewport
+  height: 100%
+  &--carousel
+    width: 300%
+  &--content-carousel
+    background-size: cover
+    width: 100%
+
+.tru-slider__list-item-animate-fade
+  position: absolute
+  width: calc(100% - 192px)
+  height: calc(100% - 110px)
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  margin: auto
+  display: block
+  opacity: 0
+  &--show
+    opacity: 1
+
+.tru-slider__top-shadow
+  content: ''
+  position: absolute
+  width: 100%
+  height: 20%
+  left: 0
+  top: 0
+  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.6) 100%)
+
+.tru-slider__bottom-shadow
+  content: ''
+  position: absolute
+  width: 100%
+  height: 20%
+  left: 0
+  bottom: 0
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%)
+
+.tru-slider__shadow
+  &--top
+    &:before
+      @extend .tru-slider__top-shadow
+  &--bottom
+    &:after
+      @extend .tru-slider__bottom-shadow
+  &--full
+    &:before
+      @extend .tru-slider__top-shadow
+    &:after
+      @extend .tru-slider__bottom-shadow
+
+.tru-slider__list-item-animate-carousel
+  position: relative
+  height: 100%
+  transition: all 0.6s linear
+  float: left
+  width: 33.3333%
+
+.tru-slider__list-item-animate-fade
+  position: absolute
+  right: 0
+  left: 0
+  margin: auto
+  cursor: pointer
+  width: 100%
+  height: 100%
+
+.tru-slider__slide-fade
+  position: absolute
+  right: 0
+  left: 0
+  top: 0
+  bottom: 0
+  height: auto
+  max-width: 100%
+  margin: auto
+  cursor: pointer
+  &--stretch-by-width
+    width: 100%
+
+.tru-slider__slide-carousel
+  height: 100%
+  background-size: cover
+  background-position: 50% 50%
+  position: relative
+  z-index: 0
+
+.tru-slider__thumbs
+  z-index: 10
+  //width: 100%
+  text-align: center
+  position: absolute
+  height: 200px
+  background: transparent
+
+.tru-slider__thumb
+  opacity: 0
+  width: 97px
+  margin-left: 10px
+  margin-right: 10px
+  margin-top: 15px
+  background-size: cover
+  float: none
+  -webkit-transition: all 0.3s ease
+  -moz-transition: all 0.3s ease
+  transition: all 0.3s ease
+  display: inline-block
+  &--show
+    opacity: 1
+
+.tru-slider__thumb-image
+  width: 100%
+  display: block
+  opacity: .7
+  cursor: pointer
+  -webkit-transition: all 1s ease
+  -moz-transition: all 1s ease
+  -ms-transition: all 1s ease
+  -o-transition: all 1s ease
+  transition: all 1s ease
+  height: 65px
+  border: 1px solid rgba(0, 0, 0, 0.3)
+  &:hover
+    -webkit-box-shadow: 0px 0px 0px 6px rgba(255, 198, 43, 0.6)
+    -moz-box-shadow: 0px 0px 0px 6px rgba(255, 198, 43, 0.6)
+    box-shadow: 0px 0px 0px 6px rgba(255, 198, 43, 0.6)
+    -webkit-border-radius: 2px
+    -moz-border-radius: 2px
+    border-radius: 2px
+    border: 1px solid rgba(183, 116, 0, 0.6)
+    cursor: pointer
+
+  &.active
+    border: 2px solid #fff
+    -webkit-border-radius: 2px
+    border-radius: 2px
+    -webkit-box-shadow: 0 0 4px 0 hsla(0, 0%, 0%, 0.5)
+    box-shadow: 0 0 4px 0 hsla(0, 0%, 0%, 0.5)
+
+.tru-slider__handler
+  -webkit-appearance: none
+  appearance: none
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  cursor: pointer
+  border: none
+  outline: none
+  display: block
+  position: absolute
+  top: 50%
+  transition: all 0.2s linear
+  z-index: 1
+  font-size: 100px
+  margin-top: -50px
+  text-shadow: 0px 1px #000000
+  color: #fff
+  &:hover
+    color: #808080
+  &--next
+    right: 10px
+  &--prev
+    left: 10px
+
+.tru-slider__button
+  top: 0
+  width: 100px
+  height: 90%
+  position: absolute
+  transition: opacity 0.2s linear
+  opacity: 0
+  z-index: 3
+  @media #{$mobile-media}, #{$mobile-landscape-media}, #{$tablet-media}
+    opacity: 1
+  &--next
+    right: 100px
+  &--prev
+    left: 100px
+  &--hide
+    display: none

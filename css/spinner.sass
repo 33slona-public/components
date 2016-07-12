@@ -1,0 +1,136 @@
+=borders($color, $px)
+  border-left: $px solid $color!important
+  border-right: $px solid $color!important
+  border-top: $px solid $color!important
+  border-bottom: $px solid transparent!important
+
+=setAnimation($time)
+  -webkit-animation: infinite slon-spinner-rotate $time linear
+  -moz-animation: infinite slon-spinner-rotate $time linear
+  -ms-animation: infinite slon-spinner-rotate $time linear
+  animation: infinite slon-spinner-rotate $time linear
+
+=keyframes()
+  0%
+    transform: rotate(0deg)
+    -webkit-transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+    -webkit-transform: rotate(360deg)
+
+.slon-spinner-rotate
+  border-radius: 100%
+  display: inline-block
+
+@keyframes slon-spinner-rotate
+  +keyframes()
+
+@-moz-keyframes slon-spinner-rotate
+  +keyframes()
+
+@-webkit-keyframes slon-spinner-rotate
+  +keyframes()
+
+@-ms-keyframes slon-spinner-rotate
+  +keyframes()
+
+.slon-spinner-centered
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  margin: auto
+
+.slon-spinner-wrapper
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: 1000
+
+.slon-spinner
+  @extend .slon-spinner-wrapper
+  &:after
+    content: ''
+    z-index: 1
+    @extend .slon-spinner-rotate
+    @extend .slon-spinner-centered
+  &-search,
+  &-main,
+  &-cabinet,
+  &-public,
+  &-blog,
+  &-common
+    background: #f5f8fe
+    @extend .slon-spinner
+    &:after
+      width: 32px
+      height: 32px
+      +setAnimation(0.5s)
+      +borders(#666, 1px)
+  &-main
+    background: transparent
+  &-popup
+    @extend .slon-spinner-main
+    width: 300px
+    height: 347px
+  &-cabinet
+    position: fixed
+  &-cabinet-operation
+    @extend .slon-spinner-cabinet
+    background: rgba(0,0,0,0.5)
+    &:after
+      +borders(#fff, 2px)
+  &-blog
+    background: hsla(220,10%,100%,0.99)
+  &-metro
+    background: transparent
+    @extend .slon-spinner
+    &:after
+      left: initial
+      right: 6px
+      width: 24px
+      height: 24px
+      +setAnimation(1s)
+      +borders(#000, 1px)
+  &-slider
+    @extend .slon-spinner
+    transition: all ease-out 1s
+    opacity: 1
+    z-index: 1
+    position: absolute
+    background-color: #fff
+    &:after
+      width: 64px
+      height: 64px
+      +setAnimation(1s)
+      +borders(#000, 2px)
+    &--no-bg
+      background-color: transparent
+    &.ng-hide-add-active
+      opacity: 0
+  &-button,
+  &-checkbox,
+  &-search-params
+    position: relative
+    &:after
+      content: ''
+      @extend .slon-spinner-rotate
+      @extend .slon-spinner-centered
+      width: 20px
+      height: 20px
+      +setAnimation(1s)
+      +borders(#000, 1px)
+  &-search-params
+    &:after
+      top: calc(100% + 100px)
+      width: 32px
+      height: 32px
+  &-button
+    color: transparent
+  &-checkbox
+    i
+      color: transparent!important
+

@@ -1,0 +1,700 @@
+@mixin error-style
+  border-color: $error-color
+  -webkit-box-shadow: 0px 0px 0px 3px $error-color, 0px 0px 0px 2px $error-color inset
+  box-shadow: 0px 0px 0px 3px $error-color, 0px 0px 0px 2px $error-color inset
+  border-radius: 6px
+  background-image: none !important
+
+html body
+  input[type='text'], input[type='tel'], input[type='email'], input[type='password']
+    +appearance(none)
+    outline: none
+    width: 100%
+    border: 1px solid
+    font-family: $sans-serif
+    color: $black
+    box-sizing: border-box
+    margin: 0 0 12px
+    transition: box-shadow .1s linear
+    -webkit-transition: box-shadow .1s linear
+    border-radius: 0
+    &::-ms-clear
+      display: none
+
+  //input[type='text'], input[type='tel'], input[type='email'], input[type='password']
+  //  height: 56px
+  //  font-size: 20px
+  //  padding: 0 18px
+
+  input[type='text'], input[type='tel'], input[type='email'], input[type='password'], textarea
+    //&:focus
+    //  border-color: $focus-color
+    //  -webkit-box-shadow: 0px 0px 0px 3px $focus-color, 0px 0px 0px 2px $focus-color inset
+    //  box-shadow: 0px 0px 0px 3px $focus-color, 0px 0px 0px 2px $focus-color inset
+    //  border-radius: 6px
+
+    &.ng-invalid-maxlength
+      +error-style
+
+    &.ng-invalid-manual, &.ng-invalid-server
+      +error-style
+
+    &.error
+      +error-style
+
+  .ng-submitted
+    input[type='text'], input[type='tel'], input[type='email'], input[type='password'], textarea
+      &.ng-invalid:not(.ng-pristine), &.ng-invalid-server
+        +error-style
+    .input-div
+      &.ng-invalid:not(.ng-pristine), &.ng-invalid-server
+        +error-style
+
+  .actions
+    padding: 0 !important
+
+  .custom-checkbox
+    display: none
+
+    &:checked + label:before
+      background-image: url('/static/images/common/media/check.svg')
+      background-size: 30px 23px
+      background-position: center
+      background-repeat: no-repeat
+      border: 6px solid $focus-color
+
+    & + label
+      display: block
+      padding: 3px 0 3px 65px
+      margin-bottom: 35px
+      margin-left: 20px
+      cursor: pointer
+
+      &:before
+        +box-sizing(boreder-box)
+        content: ''
+        display: inline-block
+        border-radius: 6px
+        width: 50px
+        height: 50px
+        margin-right: 11px
+        margin-left: -65px
+        vertical-align: middle
+        background-color: $white
+        border: 3px solid #dddddd
+
+      span
+        display: inline-block
+        vertical-align: middle
+        font-family: $sans-serif
+        font-size: 22px
+        line-height: 26px
+
+.input-div
+  border: 1px solid #000
+  width: 500px
+  font-family: 'PT Sans', sans-serif
+  font-size: 22px
+  color: #000
+  padding: 15px 20px
+  margin-bottom: 12px
+  -webkit-transition: all .1s linear
+  transition: all .1s linear
+  box-sizing: border-box
+  outline: none
+  min-height: 180px
+
+[placeholder-text]:empty:before
+  content: attr(placeholder-text)
+  float: left
+  margin-left: 2px
+  color: rgba(169, 169, 169, 1)
+
+[placeholder-text]:focus
+  border-color: #94B2E8
+  -webkit-box-shadow: 0px 0px 0px 3px #94B2E8, 0px 0px 0px 2px #94B2E8 inset
+  box-shadow: 0px 0px 0px 3px #94B2E8, 0px 0px 0px 2px #94B2E8 inset
+  border-radius: 6px
+
+.rooms-number
+  display: -webkit-flex
+  display: flex
+  -webkit-flex-flow: row nowrap
+  flex-flow: row nowrap
+  -webkit-justify-content: center
+  justify-content: center
+  height: 44px
+  width: calc(100% - 15px)
+  border: 1px solid #9fa1a5
+  background-color: #fff
+
+  & > label.room_item, .dropdown
+    -webkit-flex: 1 1 auto
+    flex: 1 1 auto
+    text-align: center
+    vertical-align: middle
+    height: 100%
+    border-right: 1px solid #9fa1a5
+    position: relative
+    cursor: pointer
+    color: #333
+
+    &:hover
+      background-color: $inp-select-hover
+
+  & > label.room_item
+    width: 38px
+
+    &:last-child
+      border-right: none
+
+    > span
+      font-size: 20px
+      display: block
+      line-height: 40px
+      margin: -1px
+      border: 1px solid transparent
+
+  .dropdown
+    position: relative
+    z-index: 100
+    width: 53px
+
+    > span
+      //display: inline
+
+  & > input
+    display: none
+
+    &:checked + label span
+      border-color: hsl(219, 61%, 72%)
+      background-color: hsl(219, 60%, 88%)
+      box-shadow: inset 0 1px 7px 0px hsl(219, 80%, 77%)
+      color: hsl(219, 61%, 40%) !important
+      font-weight: bold
+
+.ng-submited .rooms-number.ng-invalid
+  +error-style
+
+.custom-checkbox-v2
+  display: none
+
+  &:checked + label:before
+    background-image: url('/static/images/common/media/check-v2.svg')
+    background-size: 30px 23px
+    background-position: center
+    background-repeat: no-repeat
+
+  & + label
+    display: inline-block !important
+    cursor: pointer
+    color: #333 !important
+
+    &:before
+      +box-sizing(boreder-box)
+      content: ''
+      display: inline-block
+      width: 26px
+      height: 26px
+      margin-right: 12px
+      vertical-align: top
+      background-color: $white
+      border: 1px solid #9fa1a5
+
+    span:first-child
+      display: inline-block
+      vertical-align: middle
+      font-family: $sans-serif
+      font-size: 18px
+      line-height: 30px
+      white-space: normal
+
+.hint-sign
+  top: 1px
+  display: inline-block
+  vertical-align: middle
+  width: 18px
+  height: 18px
+  background-image: url('/static/images/common/media/hint.png')
+  background-repeat: no-repeat
+  background-position: center
+  position: relative
+
+.horizontal-hint
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  line-height: 18px
+  color: #999999
+  padding: 10px 20px
+  line-height: 21px
+  border: 1px solid #CCCCCC
+  width: 244px
+  background-color: #fff
+  position: absolute
+  right: -271px
+  font-size: 14px
+  font-family: $sans-serif
+  cursor: pointer
+  z-index: 100
+  letter-spacing: normal
+  top: 0
+  &--error
+    color: #FF0000
+
+  &:before, &:after
+    top: 9px
+    position: absolute
+    content: ''
+    width: 0
+    height: 0
+    border: 10px solid transparent
+    border-right: 10px solid #fff
+
+  &:before
+    border-right: 10px solid #9fa1a5
+    left: -21px
+
+  &:after
+    left: -20px
+
+.hint
+  -webkit-box-shadow: 1px 1px 3px #efefef
+  -moz-box-shadow: 1px 1px 3px #efefef
+  box-shadow: 1px 1px 3px #efefef
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  line-height: 18px
+  color: #999999
+  padding: 10px 12px
+  border: 1px solid #c4c6cb
+  width: 244px
+  margin-left: -122px
+  background-color: #fff
+  position: absolute
+  left: 50%
+  font-size: 14px
+  font-family: $sans-serif
+  cursor: pointer
+  z-index: 100
+  letter-spacing: normal
+  display: block
+
+  &.south
+    &.auth
+      top: 100%
+
+  &.error
+    color: #FF0000
+
+  &:before, &:after
+    position: absolute
+    content: ''
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: 0 9.5px 10px 9.5px
+    margin-left: -9.5px
+    left: 50%
+
+  &:before
+    border-color: transparent transparent #c4c6cb transparent
+    top: -11px
+
+  &:after
+    border-color: transparent transparent #fff transparent
+    top: -10px
+
+  &.visible
+    display: block
+
+  &.west
+    width: 286px
+    margin: 0
+    top: 0
+    left: calc(100% + 20px)
+
+    &:before, &:after
+      border-width: 9.5px 10px 9.5px 0
+      top: 13px
+
+    &:before
+      border-color: transparent #c4c6cb transparent transparent
+      left: -1px
+
+    &:after
+      border-color: transparent #fff transparent transparent
+      left: 0px
+
+  b
+    color: #cb8600
+    font-weight: 300
+
+//.page-v2
+.page-960, .page-576, .page-v2
+  .subform
+    border: 1px solid transparent
+    padding-top: 10px
+    margin-bottom: 10px
+
+    &.active
+      border-color: #dce2f0
+
+  .control-wrap
+    display: inline-block
+    position: relative
+    padding-right: 55px
+
+    &.small-padding
+      padding-right: 15px
+
+    &.without-padding
+      padding: 0
+
+  .pure-g.padding
+    padding-bottom: 12px
+
+  .align-form
+    .pure-g
+      +flexbox()
+      +fx-flow(row wrap)
+      padding-top: 10px
+      padding-bottom: 20px
+      &.bottom-field
+        border-bottom: 1px solid #dcdfe4
+        margin-bottom: 40px
+        padding-bottom: 40px
+
+      .pure-g
+        padding: 0
+
+    .label
+      +box-sizing(border-box)
+      font-family: $sans-serif
+      color: hsl(0, 0%, 50%)
+      font-size: 16px
+      text-align: right
+      padding-right: 30px
+      line-height: 42px
+      overflow-x: visible
+
+    input[type='text'], input[type='tel'], input[type='email'], input[type='password']
+      max-width: 144px
+      margin: 0
+
+      &.short
+        max-width: 82px
+
+      &.full-width
+        max-width: 350px
+        width: 350px
+
+    .annotation
+      display: inline-block
+      margin-left: 6px
+      color: #333333
+      font-size: 18px
+      font-family: $sans-serif
+
+    .quick-input
+      margin-top: 10px
+
+      button
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
+        border: none
+        background: none
+        color: #3859a7
+        border-bottom: 1px dashed #3859a7
+        font-size: 14px
+        line-height: 16px
+        padding: 0
+        margin-right: 4px
+        font-family: $sans-serif
+        cursor: pointer
+
+    .custom-checkbox-v2 + label
+      margin: 0
+      position: relative
+
+      &:before
+        position: absolute
+        top: 0
+        left: 0
+        margin: 0
+
+      span:first-child
+        padding-left: 40px
+        display: block
+
+    .checkbox-list-label
+      @extend .label
+      line-height: 26px
+
+    .checkbox-list label
+      margin-bottom: 18px
+
+
+%input-label
+  font-size: 16px
+  color: #808080
+
+.input-label
+  @extend %input-label
+  padding-bottom: 6px
+
+$placeholderColor : #b2b2b2
+
+.slon-input
+  position: relative
+  label
+    @extend %input-label
+  &__text
+    position: absolute
+    color: #989898
+    font-size: 16px
+    width: 30px
+    text-align: center
+    line-height: 39px
+  input[type='text'],
+  input[type='password']
+    padding: 0
+    padding-left: 9px
+    height: 40px
+    border: 1px solid #cccccc
+    font-size: 16px
+    overflow: hidden
+    text-overflow: ellipsis
+    margin: 0
+    &:focus
+      z-index: 2
+      box-shadow: 0 0 2px 3px rgba(245, 171, 27, 0.6)
+      border-color: #cccccc
+      border-radius: 0
+    +placeholder
+      font-weight: normal
+      color: $placeholderColor
+    &.ng-invalid:not(.ng-pristine), &.ng-invalid-server
+      +error-style
+  &--second
+    margin-left: -1px
+  &--with-text
+    input[type='text']
+      padding-left: 30px
+  &--transparent
+    input[type='text']
+      background: transparent
+      border: 0
+      &:focus
+        box-shadow: 0
+  &--with-button
+    input[type='text'],
+    input[type='password']
+      padding-right: 30px
+    i
+      color: #000
+      transition: color 0.2s linear
+      cursor: pointer
+      position: absolute
+      right: 6px
+      top: 5px
+      font-size: 28px
+      &:hover
+        color: #616161
+  &-sf
+    input[type='text'],
+    input[type='password']
+      border-radius: 0
+      height: 49px
+      font-family: 'UFont',sans-serif
+      font-size: 18px
+      border: 1px solid #fff
+      +placeholder
+        font-weight: 400
+        color: #c6c6c6
+
+
+.slon-form
+  &.ng-submitted
+    .slon-input
+      input
+        &.ng-invalid
+          //border: 1px solid #ED1B35
+          +error-style
+        border: 1px solid #cccccc
+
+textarea
+  border-radius: 0
+  min-height: initial
+  outline: none
+  border: 1px solid #d0d3da
+  box-shadow: none
+  resize: none
+  font-size: 16px
+  padding: 10px 10px
+  margin: 0
+  margin-bottom: 10px
+  line-height: initial
+  position: relative
+  display: block
+  font-family: $sans-serif
+  &:focus
+    box-shadow: 0 0 2px 3px rgba(245, 171, 27, 0.6)
+    border-radius: 0
+  +placeholder
+    color: $placeholderColor
+  &.ng-invalid:not(.ng-pristine), &.ng-invalid-server
+    +error-style
+
+.labeled-input
+  padding-top: 10px
+  &__label
+    @extend %input-label
+    -webkit-transition: all .15s cubic-bezier(.35,0,.25,1)
+    transition: all .15s cubic-bezier(.35,0,.25,1)
+    transform-origin: left center
+    -webkit-transform-origin: left center
+    -webkit-transform: translate3d(0,28px,0)
+    transform: translate3d(0px,28px,0)
+    padding-left: 9px
+    &.active
+      -webkit-transform: translate3d(0,-5px,0)
+      transform: translate3d(0px,-5px,0)
+      padding-left: 0
+
+.slon-select
+  font-family: "PT Sans", sans-serif
+  .ui-select-choices
+    top: 41px
+    left: 0
+    border-radius: 1px
+    min-width: 0
+    .ui-select-choices-row
+      a
+        padding: 3px 12px
+        font-size: 16px
+  .ui-select-match
+    display: block!important
+    &.btn-default-focus
+      box-shadow: none
+      outline: none
+    .ui-select-toggle
+      font-size: 16px
+      line-height: 38px
+      height: 40px
+      background: #fff
+      padding: 0
+      padding-left: 9px
+      padding-right: 29px
+      border-radius: 0
+      box-shadow: none
+      border: 1px solid #cccccc
+      position: absolute
+  input[type='text']
+    padding: 0
+    padding-left: 9px
+    border-radius: 0
+    border: 1px solid #cccccc
+    margin: 0
+    &:focus
+      border-radius: 0
+      box-shadow: none
+
+.slon-select--city
+  display: inline-block
+  .ui-select-choices
+    top: 29px
+    left: 9px
+  input[type='text']
+    font-size: 16px
+    line-height: 28px
+    height: 28px
+    margin-left: 9px
+  .ui-select-match
+    &.btn-default-focus
+      box-shadow: none
+      outline: none
+      background: transparent
+    .ui-select-toggle
+      border: 0
+      background: transparent
+      height: initial
+      line-height: 22px
+      padding-left: 5px
+      padding-right: 25px
+      .pull-right
+        top: 14px
+      position: relative
+      .pull-left
+        float: none
+      .ui-select-match-text
+        span
+          color: #3758a6
+          font-size: 16px
+          border-bottom: 1px dashed #3758a6
+  &.open
+    .ui-select-match
+      display: none!important
+
+
+
+.ui-select-container
+  .ui-select-match
+    &.btn-default-focus
+      outline: none
+      outline-offset: initial
+      background: transparent
+      box-shadow: 0
+    .ui-select-toggle
+      width: 100%
+      cursor: pointer
+      display: block
+  &.open
+    ul
+      z-index: 101
+      display: block
+      a
+        text-decoration: none
+
+.advice
+  width: 220px
+  height: 363px
+  box-shadow: 0px 0px 3px 0px #a6a6a6
+  background: #fff
+  float: left
+  margin-right: 20px
+  &:last-child
+    margin-right: 0px
+  &__top
+    background : #ebf1fe
+    height: 114px
+  h2
+    margin: 0
+    font-size: 22px!important
+    padding: 10px 0
+  &__bottom
+    color: #90a3d1
+  &__content
+    text-align: center
+    padding: 0 20px
+  button
+    padding: 10px 15px
+    margin: 10px 0
+    border-bottom: 2px solid #7E8CAB
+    font-size: 16px
+    width: 100%
+
+[class*='pure-u-']
+  +flex(0 0 auto)
+
+label.req-align:after,
+label.required:after,
+.label.required:after
+  content: '*'
+  color: hsl(0, 100%, 45%)
+  font-size: 18px
+
+label.req-align:after
+  color: transparent
