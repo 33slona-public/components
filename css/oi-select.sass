@@ -1,0 +1,134 @@
+oi-select
+  .select-search
+    border: 1px solid hsl(220, 3%, 80%)
+    border-radius: 0
+    height: 44px
+    .select-search-list
+      padding: 0
+      //.select-search-list>li:first-child
+      //  position: absolute
+  &.focused
+    //border: 1px solid hsl(220, 3%, 64%)
+    .select-search
+      box-shadow: none
+      border-color: hsl(220, 3%, 80%)
+      outline: none
+      //box-shadow: inset 0 1px 1px hsla(0, 0%, 0%, 0.075), 0 0 3px hsla(220, 0%, 66%, 0.6)
+      border-radius: 0
+  &:not(.multiple)
+    height: 44px
+    .select-search-list-item_selection
+      padding: 8px 0 0 12px
+      width: auto
+  &:not(.multiple):not(.cleanMode) .select-search:after
+    margin-top: 0
+    top: 50%
+    border-color: hsl(220, 3%, 64%) hsla(0, 0%, 0%, 0) hsla(0, 0%, 0%, 0)
+    .select-search-list-item.select-search-list-item_input
+      //position: absolute
+      margin-top: -20px !important
+  .select-search-list-item, .select-search-list-item_input input, .select-dropdown-optgroup-option
+    font-size: 18px
+    font-family: "PT Sans", Arial, sans-serif
+  .select-search-list-item.select-search-list-item_input
+    margin: 0
+    & > input
+      border: none
+      margin: 8px 0 0 12px
+      &:active
+        box-shadow: none
+      &:focus
+        box-shadow: none
+
+  .select-dropdown-optgroup-option
+    padding: 2px 12px
+  .select-dropdown
+    overflow: auto
+    max-height: 200px
+    max-width: 100%
+    border: 1px solid hsl(220, 3%, 80%)
+    border-radius: 0
+    box-shadow: 0 4px 5px hsla(220, 3%, 64%, 0.2)
+    &-optgroup-option.active:not(.disabled)
+      background: hsl(220, 67%, 85%)
+      color: hsl(0, 100%, 100%)
+  &.no-ms-scroll
+    .select-dropdown
+      -ms-overflow-style: none
+
+  //&-optgroup-option
+    //  background: linear-gradient(150deg, hsl(220,99%,100%), hsl(220,99%,100%)90%, hsl(220,99%,95.5%))
+    //  &:nth-child(2n)
+    //    background: linear-gradient(-150deg, hsl(220,99%,100%), hsl(220,99%,100%)90%, hsl(220,99%,95.5%))
+
+
+  &.select-metro.with-m-label, &.select-metro--with-tags
+    .select-search
+      .select-search-list-item.select-search-list-item_input > input
+        padding: 2px 0
+        +placeholder
+          //margin: 0 0 0 0
+          //padding: 0 0 0 0
+          font-size: 16px
+          line-height: 24px
+
+    /* styles for item's filters */
+    .select-dropdown-optgroup-option, .select-search-list-item_selection
+      display: block
+      .select-metro-list-item, .select-metro-selected
+        +flexbox
+        +fx-jc(fx-start)
+        +fx-ai(center)
+        min-height: 24px
+        &>.metro-line, &>.metro-line-svg-m
+          +flex(0 0 18px)
+          height: 18px
+          margin: 0
+        &>.metro-line
+          border: 1px solid rgba(0, 0, 0, 0.1)
+          width: 18px
+          border-radius: 50%
+        &>.metro-line-svg-m
+          width: 21px
+          margin: -6px 0 0 6px
+        &>.metro-text
+          +flex(1 1 auto)
+          padding-left: 6px
+          font-size: 16px
+        &>.metro-line-svg-m
+  &.select-metro.with-m-label
+    .select-search-list-item_selection
+      height: 44px
+      &>.select-metro-selected
+        height: 100%
+  &.select-metro--with-tags
+    height: auto
+    .select-search
+      height: auto
+      min-height: 40px
+      .select-search-list-item.select-search-list-item_input
+        padding: 0
+        &>input
+          margin: 0
+          padding: 6px 8px
+    .select-search-list-item_selection
+      height: 30px
+      margin: -2px -8px 0px 0px
+
+oi-select.sf-select
+  &:not(.multiple)
+    height: 49px
+  .select-search
+    border: 1px solid #fff
+    height: 49px
+    &:not(.multiple)
+      height: 49px
+      .select-search-list-item_selection
+        padding: 12px 0 0 12px
+        //margin: 12px 0 0 12px
+  .select-search-list-item, .select-search-list-item_input input, .select-dropdown-optgroup-option
+    font-size: 18px
+    font-family: 'UFont',sans-serif
+    font-weight: 400
+
+
