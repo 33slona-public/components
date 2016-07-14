@@ -9,7 +9,7 @@ slonComponents.directive('multiButtons', function($timeout, $compile) {
             name: '@'
         },
         replace : true,
-        templateUrl: 'components/directives/multiButtons/multiButtons.html',
+        templateUrl: '/components/directives/multiButtons/multiButtons.html',
         link: function ($scope) {
             Object.defineProperty($scope,'currentOption',{
                 get : function(){

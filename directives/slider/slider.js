@@ -251,7 +251,7 @@ slonComponents.directive('angularTruSlider', function ($timeout, $compile, $http
                     if (scope.shadow) scope.shadowClass += '--' + scope.shadow;
 
                     function renderSlider() {
-                        return $templateRequest('components/directives/slider/slider.html')
+                        return $templateRequest('/components/directives/slider/slider.html')
                             .then(function (response) {
                                 html = response;
                                 template = angular.element(html);
