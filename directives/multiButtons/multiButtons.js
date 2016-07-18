@@ -5,7 +5,7 @@ slonComponents.directive('multiButtons', function($timeout, $compile) {
             cssClass: '@',
             checkbox: '=',
             object: '=',
-            changeCallback: '&',
+            changeCallback: '=',
             name: '@'
         },
         replace : true,
