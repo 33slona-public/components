@@ -1,0 +1,23 @@
+<ul class="b-pagination" ng-show="!pagination.noPagination">
+    <a ng-click="onclick($event, pagination.currentPage - 1)"
+       ng-href="{{pagination.pagesWithUrl.prev}}"
+       ng-if="!pagination.isFirstPageGroup"
+       class="b-pagination__link l-arrow">
+        <li>Назад</li>
+        <!--<li>{{L.g.pagination.prevPage}}</li>-->
+    </a>
+    <a  ng-click="onclick($event, page)"
+        ng-href="{{pagination.pagesWithUrl[page]}}"
+        class="b-pagination__link"
+        ng-class="{'b-pagination__link--active' : page == pagination.currentPage}"
+        ng-repeat="page in pagination.pages">
+        <li>{{page}}</li>
+    </a>
+    <a ng-click="onclick($event, pagination.currentPage + 1)"
+       ng-href="{{pagination.pagesWithUrl.next}}"
+       class="b-pagination__link r-arrow"
+       ng-if="!pagination.isLastPageGroup">
+        <li>Дальше</li>
+        <!--<li>{{L.g.pagination.nextPage}}</li>-->
+    </a>
+</ul>

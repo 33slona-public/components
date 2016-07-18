@@ -1,5 +1,30 @@
 'use strict';
 
+slonComponents.directive( 'paginationBlock', [
+    'Pagination','L',
+    function(Pagination, L) {
+        return {
+            restrict: 'E',
+            scope: {
+                for: '@',
+                isLoaded: '='
+            },
+            templateUrl: '/components/directives/pagination/pagination.html',
+            link: function ( scope, element ) {
+                scope.for = scope.for.charAt(0).toUpperCase() + scope.for.slice(1);
+                scope.L = L;
+                scope.$on('$updatePagination' + scope.for, function(event, data){
+                    scope.onclick = data.onclick;
+                    scope.pagination = new Pagination(
+                        data.total, data.groupSize, data.currentPage, data.url
+                    );
+                });
+                if (scope.isLoaded) scope.isLoaded.resolve();
+            }
+        };
+    }
+]);
+
 slonComponents.factory('Pagination', [function(){
     var Pagination;
 
