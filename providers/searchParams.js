@@ -257,6 +257,9 @@ slonComponents.provider('searchParams', function () {
             }
 
             Options.prototype = Object.create(AbstractParam.prototype);
+            Options.prototype.isNotNull = function(){
+                return this.options.indexOf(this.value) !== -1;
+            };
 
             params.composite = Composite;
 
