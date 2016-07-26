@@ -1,7 +1,7 @@
 var slonComponents = angular.module('slon.components', []);
 slonComponents.run(function($rootScope){});
 
-slon = {};
+slon = {config : {}, session : {}};
 
 slon.config.ignoreSeoKey = 'all';
 
