@@ -1,8 +1,8 @@
 'use strict';
 slonComponents.config(function($urlRouterProvider){
     $urlRouterProvider.otherwise(function ($injector, $location) {
-        var metaTags = $injector('metaTags');
-        var $state = $injector('$state');
+        var metaTags = $injector.get('metaTags');
+        var $state = $injector.get('$state');
         metaTags['statusCode'] = 404;
         $state.go('404');
     });
