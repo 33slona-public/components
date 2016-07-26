@@ -1,4 +1,12 @@
 'use strict';
+slonComponents.config(function($urlRouterProvider){
+    $urlRouterProvider.otherwise(function ($injector, $location) {
+        var metaTags = $injector('metaTags');
+        var $state = $injector('$state');
+        metaTags['statusCode'] = 404;
+        $state.go('404');
+    });
+});
 
 slonComponents.provider('metaTags', function(){
     var defaultMetaData;
@@ -56,17 +64,10 @@ slonComponents.provider('metaTags', function(){
         }
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-            if (toState.name !== '404'){
+            if (toState.name != '404'){
                 metaTags.statusCode = 200;
                 update('og:');
             }
-            else{
-                metaTags.statusCode = 404;
-            }
-        });
-
-        $rootScope.$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
-            $state.go('404');
         });
 
         metaTags = {
