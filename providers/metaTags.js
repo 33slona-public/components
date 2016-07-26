@@ -2,9 +2,7 @@
 slonComponents.config(function($urlRouterProvider){
     $urlRouterProvider.otherwise(function ($injector, $location) {
         var metaTags = $injector.get('metaTags');
-        var $state = $injector.get('$state');
         metaTags['statusCode'] = 404;
-        $state.go('404');
     });
 });
 
@@ -64,10 +62,8 @@ slonComponents.provider('metaTags', function(){
         }
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-            if (toState.name != '404'){
-                metaTags.statusCode = 200;
-                update('og:');
-            }
+            metaTags.statusCode = 200;
+            update('og:');
         });
 
         metaTags = {
