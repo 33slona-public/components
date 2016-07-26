@@ -1,4 +1,4 @@
-var slonComponents = angular.module('slon.components', []);
+var slonComponents = angular.module('slon.components', ['ui.router']);
 slonComponents.run(function($rootScope){});
 
 slon = {config : {}, session : {}};
