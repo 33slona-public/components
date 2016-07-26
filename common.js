@@ -1,17 +1,7 @@
 var slonComponents = angular.module('slon.components', []);
 slonComponents.run(function($rootScope){});
 
-slon = (function() {
-    var scope = {};
-    scope.session = {"city":124,"lang":"ru"};
-    scope.config = {"country":"ru","lang":"ru","phoneCode":"+7","currency":"rub","project":"67250f987ac36393b777d36ab676afd4",
-        "apiUrl":"https://api.33slona.ru","cdnUrl":"https://cdn.33slona.net","tokenKey":"slonAT",
-        "ad":{"images":{"useCropping":false,"minWidth":640,"minHeight":480,"maxWeight":10}},"defaultLang":"ru"};
-    scope.options = {"photoFinishDate":"30 июня 2016"};
-    scope.seo = [];
-
-    return scope;
-})();
+slon = {};
 
 slon.config.ignoreSeoKey = 'all';
 
