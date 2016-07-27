@@ -9,7 +9,8 @@ slon.regs = {
     "phone" : new RegExp('^\\' + slon.config.phoneCode + ' \\(\\d{3}\\) \\d{3}\\-\\d{4}$'),
     "phoneMask" : slon.config.phoneCode + ' (999) 999-9999',
     validEmail : /^[-\w.+_]+@[-\w.+_]+\.[a-z]{2,4}$/i,
-    validPhone : /^(8|7|\+7|\+1){0,1}9[0-9]{9}$/
+    validPhone : /^((8|7|\+7|\+1)(\-)?)?(\()?9[0-9]{2}(\))?(\-)?([0-9]{1}(\-)?){6}[0-9]{1}$/,
+    clearPhone : /\s|-|\(|\)/g
 };
 
 slon.detectDevice = function (){
