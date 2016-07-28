@@ -13,6 +13,18 @@ slon.regs = {
     clearPhone : /\s|-|\(|\)/g
 };
 
+/**
+ * Clear username, needed for valid for API
+ * @param val
+ * @returns {*}
+ */
+slon.clearUserName = function (val){
+    if (val && val.lastIndexOf('@') === -1){
+        return val.replace(slon.regs.clearPhone, '').slice(-10);
+    }
+    return val;
+};
+
 slon.detectDevice = function (){
     var media,
         viewport = $(document.body),
