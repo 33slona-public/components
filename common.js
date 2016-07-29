@@ -6,8 +6,8 @@ slon = {config : {}, session : {}};
 slon.config.ignoreSeoKey = 'all';
 
 slon.regs = {
-    "phone" : new RegExp('^\\' + slon.config.phoneCode + ' \\(\\d{3}\\) \\d{3}\\-\\d{4}$'),
-    "phoneMask" : slon.config.phoneCode + ' (999) 999-9999',
+    get phone() { return new RegExp('^\\' + slon.config.phoneCode + ' \\(\\d{3}\\) \\d{3}\\-\\d{4}$');},
+    get phoneMask() { return slon.config.phoneCode + ' (999) 999-9999'; },
     validEmail : /^[-\w.+_]+@[-\w.+_]+\.[a-z]{2,4}$/i,
     validPhone : /^((8|7|\+7|\+1)(\-)?)?(\()?9[0-9]{2}(\))?(\-)?([0-9]{1}(\-)?){6}[0-9]{1}$/,
     clearPhone : /\s|-|\(|\)/g
