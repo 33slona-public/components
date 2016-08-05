@@ -45,11 +45,11 @@ slonComponents.factory('requests', ['$http','$timeout','$q', function($http, $ti
                         var i, file;
                         for (i = 0; i < val.length; i++) {
                             file = val[i];
-                            _formData.append(formDataName + '[' + key + '][]', file);
+                            _formData.append(formDataName ? (formDataName + '[' + key + '][]') : key, file);
                         }
                     }
                     else {
-                        _formData.append(formDataName + '[' + key + ']', val);
+                        _formData.append(formDataName ? (formDataName + '[' + key + ']') : key, val);
                     }
                 });
                 return _formData;
