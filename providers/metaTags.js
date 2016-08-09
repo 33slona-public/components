@@ -8,11 +8,11 @@ slonComponents.config(function($urlRouterProvider){
 
 slonComponents.provider('metaTags', function(){
     var defaultMetaData;
-    
+
     this.default = function(data){
         defaultMetaData = data;
     };
-    
+
     this.$get = ['$state','$location','$rootScope',function($state, $location, $rootScope){
         var pages = {};
         var images = {}, currentImage = { imgUrl: '' };
@@ -47,7 +47,7 @@ slonComponents.provider('metaTags', function(){
             var currentStateName = $state.current.name;
             var parentStateName = $state.current.name.split('.')[0];
             var currentPage = pages[currentStateName];
-            if (!currentPage) currentPage = pages[parentStateName] || $state.current.meta || defaultMetaData;
+            if (!currentPage) currentPage = pages[parentStateName] || $state.current.meta || $state.$current.parent.self.meta || defaultMetaData;
             var assocFields = {
                 "title" : "mrc__share_title"
             };
