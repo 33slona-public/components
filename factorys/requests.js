@@ -58,10 +58,13 @@ slonComponents.factory('requests', ['$http','$timeout','$q', function($http, $ti
         })
     }
 
-    function putRequest(path, putParams) {
-        return $http.put({
-            params: putParams,
-            url: slon.config.apiUrl + path
+    function putRequest(path, getParams, putParams, postParams) {
+        return $http({
+            method: 'PUT',
+            params: getParams,
+            data: $.param(JSON.parse(JSON.stringify(postParams))),
+            url: slon.config.apiUrl + path,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
     }
 
