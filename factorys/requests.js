@@ -7,9 +7,9 @@ slonComponents.factory('requests', ['$http','$timeout','$q', function($http, $ti
         })
     }
 
-    function postRequest(path, postParams, getParams) {
+    function postRequest(path, postParams, getParams, method) {
         return $http({
-            method: 'POST',
+            method: method ? method : 'POST',
             params: getParams,
             data: $.param(JSON.parse(JSON.stringify(postParams))),
             url: slon.config.apiUrl + path,
@@ -58,21 +58,10 @@ slonComponents.factory('requests', ['$http','$timeout','$q', function($http, $ti
         })
     }
 
-    function putRequest(path, getParams, putParams, postParams) {
-        return $http({
-            method: 'PUT',
-            params: getParams,
-            data: $.param(JSON.parse(JSON.stringify(postParams))),
-            url: slon.config.apiUrl + path,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        })
-    }
-
     return {
         get: getRequest,
         post: postRequest,
         delete: deleteRequest,
-        put : putRequest,
         formData : formData,
         mock: mock
     }
