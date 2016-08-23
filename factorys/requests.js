@@ -58,10 +58,18 @@ slonComponents.factory('requests', ['$http','$timeout','$q', function($http, $ti
         })
     }
 
+    function putRequest(path, putParams) {
+        return $http.put({
+            params: putParams,
+            url: slon.config.apiUrl + path
+        })
+    }
+
     return {
         get: getRequest,
         post: postRequest,
         delete: deleteRequest,
+        put : putRequest,
         formData : formData,
         mock: mock
     }
