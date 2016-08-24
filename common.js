@@ -9,7 +9,7 @@ slon.regs = {
     get phone() { return new RegExp('^\\' + slon.config.phoneCode + ' \\(\\d{3}\\) \\d{3}\\-\\d{4}$');},
     get phoneMask() { return slon.config.phoneCode + ' (999) 999-9999'; },
     validEmail : /^[-\w.+_]+@[-\w.+_]+\.[a-z]{2,4}$/i,
-    validPhone : /^((8|7|\+7|\+1)(\-)?)?(\()?9[0-9]{2}(\))?(\-)?([0-9]{1}(\-)?){6}[0-9]{1}$/,
+    validPhone : /^((8|7|\+7|\+1)(\-)?)?(\()?[0-9]{3}(\))?(\-)?([0-9]{1}(\-)?){6}[0-9]{1}$/,
     clearPhone : /\s|-|\(|\)/g
 };
 
