@@ -206,7 +206,7 @@ function dirtyStringToNumber (string) {
 slon.log = function() {
     if(slon.isDebug) {
         var a = [].slice.call(arguments);
-        a.unshift(' ' + (slon.log.caller.name ? slon.log.caller.name : 'anon') + ' >>');
+        a.unshift(' ' + (slon.log.caller && slon.log.caller.name ? slon.log.caller.name : 'anon') + ' >>');
         console.trace.apply(console, a);
     }
 };
